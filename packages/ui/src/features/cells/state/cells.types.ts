@@ -21,3 +21,8 @@ export interface UpdateCellPayload {
   cellId: string;
   content: string;
 }
+
+export interface MoveCellPayload {
+  cellId: string;
+  direction: 'up' | 'down';
+}

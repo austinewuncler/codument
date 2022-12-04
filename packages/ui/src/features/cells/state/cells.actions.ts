@@ -1,3 +1,4 @@
 import cellsSlice from './cells.slice';
 
-export const { insertCell, updateCell } = cellsSlice.actions;
+export const { insertCell, updateCell, moveCell, deleteCell } =
+  cellsSlice.actions;

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 
 import type { Cell } from '../state';
+import CellListItemHeader from './CellListItemHeader';
 import CodeCell from './CodeCell';
 import MarkdownCell from './MarkdownCell';
 
@@ -17,6 +18,7 @@ const CellListItem = ({ cell }: Props): JSX.Element => {
       animate={{ opacity: 1, scale: 1 }}
       className="overflow-hidden rounded-lg shadow"
     >
+      <CellListItemHeader cellId={cell.id} />
       {cell.type === 'markdown' ? (
         <MarkdownCell content={cell.content} id={cell.id} />
       ) : (

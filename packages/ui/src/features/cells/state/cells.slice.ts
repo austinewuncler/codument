@@ -5,6 +5,7 @@ import type {
   Cell,
   CellsState,
   InsertCellPayload,
+  MoveCellPayload,
   UpdateCellPayload,
 } from './cells.types';
 
@@ -27,6 +28,22 @@ const cellsSlice = createSlice({
     updateCell: (state, { payload }: PayloadAction<UpdateCellPayload>) => {
       const { cellId, content } = payload;
       cellsAdapter.updateOne(state.data, { id: cellId, changes: { content } });
+    },
+    moveCell: (state, { payload }: PayloadAction<MoveCellPayload>) => {
+      const { cellId, direction } = payload;
+      const sourceIndex = state.data.ids.findIndex((id) => id === cellId);
+      const destinationIndex =
+        direction === 'up' ? sourceIndex - 1 : sourceIndex + 1;
+      if (destinationIndex >= 0 && destinationIndex < state.data.ids.length) {
+        state.data.ids[sourceIndex] = state.data.ids[
+          destinationIndex
+        ] as string;
+        state.data.ids[destinationIndex] = cellId;
+      }
+    },
+    deleteCell: (state, { payload }: PayloadAction<string>) => {
+      const cellId = payload;
+      cellsAdapter.removeOne(state.data, cellId);
     },
   },
 });
