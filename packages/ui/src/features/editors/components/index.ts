@@ -1,3 +1,4 @@
+import CodeEditor from './CodeEditor';
 import MarkdownEditor from './MarkdownEditor';
 
-export { MarkdownEditor };
+export { CodeEditor, MarkdownEditor };

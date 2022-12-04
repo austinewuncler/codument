@@ -8,7 +8,9 @@
   "devDependencies": {
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/eslint": "^8.4.10",
+    "@types/prettier": "^2.7.1",
     "eslint": "^8.29.0",
+    "prettier": "^2.8.0",
     "rehype-prism-plus": "^1.5.0",
     "typescript": "^4.9.3"
   }

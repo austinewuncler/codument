@@ -8,5 +8,6 @@
   "conventionalCommits.scopes": [
     "ui"
   ],
-  "eslint.nodePath": ".yarn/sdks"
+  "eslint.nodePath": ".yarn/sdks",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }

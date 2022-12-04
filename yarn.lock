@@ -476,8 +476,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@markode/ui@workspace:packages/ui"
   dependencies:
+    "@monaco-editor/react": ^4.4.6
     "@reduxjs/toolkit": ^1.9.1
     "@types/eslint": ^8.4.10
+    "@types/prettier": ^2.7.1
     "@types/react": ^18.0.26
     "@types/react-dom": ^18.0.9
     "@typescript-eslint/eslint-plugin": ^5.45.0
@@ -496,17 +498,45 @@ __metadata:
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-simple-import-sort: ^8.0.0
     framer-motion: ^7.6.18
+    monaco-editor: ^0.34.1
     postcss: ^8.4.19
+    prettier: ^2.8.0
     re-resizable: ^6.9.9
     react: ^18.2.0
     react-dom: ^18.2.0
     react-redux: ^8.0.5
+    react-spinners: ^0.13.7
     tailwindcss: ^3.2.4
     typescript: ^4.9.3
     vite: ^3.2.4
     vite-tsconfig-paths: ^3.6.0
   languageName: unknown
   linkType: soft
+
+"@monaco-editor/loader@npm:^1.3.2":
+  version: 1.3.2
+  resolution: "@monaco-editor/loader@npm:1.3.2"
+  dependencies:
+    state-local: ^1.0.6
+  peerDependencies:
+    monaco-editor: ">= 0.21.0 < 1"
+  checksum: 7a1b65052bbaf4ef826392687bd7cfaf839509611034d2d616783b5d3fee91ed304d9086517c3b5f9099707828c57c855ff43407b3c2f5ae480faebb104d4343
+  languageName: node
+  linkType: hard
+
+"@monaco-editor/react@npm:^4.4.6":
+  version: 4.4.6
+  resolution: "@monaco-editor/react@npm:4.4.6"
+  dependencies:
+    "@monaco-editor/loader": ^1.3.2
+    prop-types: ^15.7.2
+  peerDependencies:
+    monaco-editor: ">= 0.25.0 < 1"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: cb25b5ce153608c2a4291390456488e100c5e3ac48a913875c98182836e2a9f315d4f96e85cf6f7d4b1eadff8d08d13356e38891b472894155bcb2c4aeaf3b1c
+  languageName: node
+  linkType: hard
 
 "@motionone/animation@npm:^10.13.1":
   version: 10.14.0
@@ -733,6 +763,13 @@ __metadata:
   version: 6.0.3
   resolution: "@types/parse5@npm:6.0.3"
   checksum: ddb59ee4144af5dfcc508a8dcf32f37879d11e12559561e65788756b95b33e6f03ea027d88e1f5408f9b7bfb656bf630ace31a2169edf44151daaf8dd58df1b7
+  languageName: node
+  linkType: hard
+
+"@types/prettier@npm:^2.7.1":
+  version: 2.7.1
+  resolution: "@types/prettier@npm:2.7.1"
+  checksum: 5e3f58e229d6c73b5f5cae2e8f96c1c4a5b5805f83459e17a045ba8e96152b1d38e86b63e3172fb159dac923388699660862b75b2d37e54220805f0e691e26f1
   languageName: node
   linkType: hard
 
@@ -3633,7 +3670,9 @@ __metadata:
   dependencies:
     "@tsconfig/node-lts-strictest": ^18.12.1
     "@types/eslint": ^8.4.10
+    "@types/prettier": ^2.7.1
     eslint: ^8.29.0
+    prettier: ^2.8.0
     rehype-prism-plus: ^1.5.0
     typescript: ^4.9.3
   languageName: unknown
@@ -4242,6 +4281,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"monaco-editor@npm:^0.34.1":
+  version: 0.34.1
+  resolution: "monaco-editor@npm:0.34.1"
+  checksum: 4c6b35d7c566ec414b758cdd45dfb08d6fe46e2e8fdeed88b619a52c47592ce6df476d9490a58e5d450339c4a93f09d500adc9c017a348179277b98aa6009fa4
+  languageName: node
+  linkType: hard
+
 "mri@npm:^1.1.0":
   version: 1.2.0
   resolution: "mri@npm:1.2.0"
@@ -4714,6 +4760,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prettier@npm:^2.8.0":
+  version: 2.8.0
+  resolution: "prettier@npm:2.8.0"
+  bin:
+    prettier: bin-prettier.js
+  checksum: 72004ce0cc9bb097daf3e3833f62495768724392c1d5b178dd47372337616e9e50ecbb0804f236596223f7b5eb1bbe69cefc8957dca21112c5777e77ef73a564
+  languageName: node
+  linkType: hard
+
 "promise-inflight@npm:^1.0.1":
   version: 1.0.1
   resolution: "promise-inflight@npm:1.0.1"
@@ -4731,7 +4786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.0.0, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.0.0, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -4868,6 +4923,16 @@ __metadata:
   version: 0.14.0
   resolution: "react-refresh@npm:0.14.0"
   checksum: dc69fa8c993df512f42dd0f1b604978ae89bd747c0ed5ec595c0cc50d535fb2696619ccd98ae28775cc01d0a7c146a532f0f7fb81dc22e1977c242a4912312f4
+  languageName: node
+  linkType: hard
+
+"react-spinners@npm:^0.13.7":
+  version: 0.13.7
+  resolution: "react-spinners@npm:0.13.7"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: d7a555b42313d301e561c39a4f20ae1b0da55541a6936ab44147eca5c8185036d4f6caebf450a9e6303211270f1aa72be843cbc1328024c832507c3f89ef0116
   languageName: node
   linkType: hard
 
@@ -5414,6 +5479,13 @@ __metadata:
   dependencies:
     minipass: ^3.1.1
   checksum: fb58f5e46b6923ae67b87ad5ef1c5ab6d427a17db0bead84570c2df3cd50b4ceb880ebdba2d60726588272890bae842a744e1ecce5bd2a2a582fccd5068309eb
+  languageName: node
+  linkType: hard
+
+"state-local@npm:^1.0.6":
+  version: 1.0.7
+  resolution: "state-local@npm:1.0.7"
+  checksum: d1afcf1429e7e6eb08685b3a94be8797db847369316d4776fd51f3962b15b984dacc7f8e401ad20968e5798c9565b4b377afedf4e4c4d60fe7495e1cbe14a251
   languageName: node
   linkType: hard
 

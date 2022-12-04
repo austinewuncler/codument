@@ -1,18 +1,15 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-import { useTypedDispatch } from '~common/hooks';
-import { MarkdownEditor } from '~features/editors';
-
-import { Cell, updateCell } from '../state';
+import type { Cell } from '../state';
+import CodeCell from './CodeCell';
+import MarkdownCell from './MarkdownCell';
 
 interface Props {
   cell: Cell;
 }
 
 const CellListItem = ({ cell }: Props): JSX.Element => {
-  const dispatch = useTypedDispatch();
-
   return (
     <motion.article
       layout
@@ -21,14 +18,9 @@ const CellListItem = ({ cell }: Props): JSX.Element => {
       className="overflow-hidden rounded-lg shadow"
     >
       {cell.type === 'markdown' ? (
-        <MarkdownEditor
-          content={cell.content}
-          onChange={(value) =>
-            dispatch(updateCell({ cellId: cell.id, content: value ?? '' }))
-          }
-        />
+        <MarkdownCell content={cell.content} id={cell.id} />
       ) : (
-        <div>Code</div>
+        <CodeCell id={cell.id} content={cell.content} />
       )}
     </motion.article>
   );
