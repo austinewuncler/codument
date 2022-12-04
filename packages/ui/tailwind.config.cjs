@@ -11,6 +11,7 @@ module.exports = {
       primary: '#06b6d4',
       foreground: { dark: '#111d20', light: '#e6f5f9' },
       accent: { 1: '#d406b6', 2: '#b6d406' },
+      error: colors.red['500'],
     },
     fontFamily: { mono: ['Ubuntu Mono', 'monospace'] },
   },

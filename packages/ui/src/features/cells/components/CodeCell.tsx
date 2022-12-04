@@ -1,16 +1,29 @@
 import { Resizable } from 're-resizable';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useTypedDispatch } from '~common/hooks';
-import { BundlePreview } from '~features/bundles';
+import { useTypedDispatch, useTypedSelector } from '~common/hooks';
+import { BundlePreview, createBundle, selectBundle } from '~features/bundles';
 import { CodeEditor } from '~features/editors';
 
-import { Cell, updateCell } from '../state';
+import { useCumulativeCode } from '../hooks';
+import { updateCell } from '../state';
 
-interface Props extends Pick<Cell, 'content' | 'id'> {}
+interface Props {
+  cellId: string;
+  content: string;
+}
 
-const CodeCell = ({ content, id }: Props): JSX.Element => {
+const CodeCell = ({ content, cellId }: Props): JSX.Element => {
   const dispatch = useTypedDispatch();
+  const bundle = useTypedSelector(selectBundle(cellId));
+  const cumulativeCode = useCumulativeCode(cellId);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(createBundle({ cellId, code: cumulativeCode }));
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [cellId, cumulativeCode, dispatch]);
 
   return (
     <Resizable
@@ -30,11 +43,11 @@ const CodeCell = ({ content, id }: Props): JSX.Element => {
         <CodeEditor
           content={content}
           onChange={(value) =>
-            dispatch(updateCell({ cellId: id, content: value ?? '' }))
+            dispatch(updateCell({ cellId, content: value ?? '' }))
           }
         />
       </Resizable>
-      <BundlePreview />
+      <BundlePreview bundle={bundle} />
     </Resizable>
   );
 };

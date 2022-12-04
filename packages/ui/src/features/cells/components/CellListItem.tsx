@@ -20,7 +20,7 @@ const CellListItem = ({ cell }: Props): JSX.Element => {
       {cell.type === 'markdown' ? (
         <MarkdownCell content={cell.content} id={cell.id} />
       ) : (
-        <CodeCell id={cell.id} content={cell.content} />
+        <CodeCell cellId={cell.id} content={cell.content} />
       )}
     </motion.article>
   );
