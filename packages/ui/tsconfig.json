@@ -19,7 +19,7 @@
     "noUnusedLocals": false,
     "jsx": "react-jsx",
     "baseUrl": "./src",
-    "paths": { "~common/*": ["common/*"] }
+    "paths": { "~common/*": ["common/*"], "~features/*": ["features/*"] }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
