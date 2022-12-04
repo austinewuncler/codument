@@ -8,13 +8,21 @@ import InsertCellButton from './InsertCellButton';
 
 interface Props {
   prevCellId: string | null;
+  forceVisible?: boolean;
 }
 
-const InsertCell = ({ prevCellId }: Props): JSX.Element => {
+const InsertCell = ({
+  prevCellId,
+  forceVisible = false,
+}: Props): JSX.Element => {
   const dispatch = useTypedDispatch();
 
   return (
-    <div className="flex justify-center">
+    <div
+      className={`flex justify-center transition-all duration-300 group ${
+        forceVisible ? 'opacity-100' : 'opacity-0 hover:opacity-100'
+      }`}
+    >
       <div className="flex items-center gap-2">
         <InsertCellButton
           type="markdown"

@@ -29,7 +29,12 @@ const ThemeProvider = ({ children }: Props): JSX.Element => {
 
   return (
     <ThemeContext.Provider value={context}>
-      <div className={theme === 'dark' ? 'dark' : ''}>{children}</div>
+      <div
+        data-color-mode={theme === 'dark' ? 'dark' : 'light'}
+        className={theme === 'dark' ? 'dark' : ''}
+      >
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 };
