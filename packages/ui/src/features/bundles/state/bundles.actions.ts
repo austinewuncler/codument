@@ -1,7 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { build } from 'esbuild-wasm';
 
-import { fetchModulesPlugin, resolvePathsPlugin } from '../plugins';
+import {
+  cssPlugin,
+  fetchModulesPlugin,
+  modulesCachePlugin,
+  resolvePathsPlugin,
+} from '../plugins';
 import type { CreateBundleInput } from './bundles.types';
 
 export const createBundle = createAsyncThunk<string, CreateBundleInput>(
@@ -11,7 +16,12 @@ export const createBundle = createAsyncThunk<string, CreateBundleInput>(
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
-      plugins: [resolvePathsPlugin(), fetchModulesPlugin(code)],
+      plugins: [
+        resolvePathsPlugin(),
+        modulesCachePlugin(),
+        cssPlugin(),
+        fetchModulesPlugin(code),
+      ],
       jsxFactory: '_React.createElement',
       jsxFragment: '_React.Fragment',
     });

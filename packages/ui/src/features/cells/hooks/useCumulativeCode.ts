@@ -7,13 +7,13 @@ const showFunc = `
     import {createRoot} from 'react-dom/client';
     const rootEl = document.getElementById('root');
     var show = (value) => {
-      const root = createRoot(rootEl);
       if (typeof value === 'object') {
         if (value.$$typeof && value.props) {
+          const root = createRoot(rootEl);
           root.render(value);
         }
         else{
-          root.innerHTML = JSON.stringify(value);
+          rootEl.innerHTML = JSON.stringify(value);
         }
       } else {
         rootEl.innerHTML = value;
