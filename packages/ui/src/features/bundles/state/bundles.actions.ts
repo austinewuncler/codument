@@ -24,6 +24,10 @@ export const createBundle = createAsyncThunk<string, CreateBundleInput>(
       ],
       jsxFactory: '_React.createElement',
       jsxFragment: '_React.Fragment',
+      define: {
+        'process.env.NODE_ENV': '"production"',
+        global: 'window',
+      },
     });
     const bundle = outputFiles[0]?.text;
     if (bundle === undefined) throw new Error('bundle is undefined');
