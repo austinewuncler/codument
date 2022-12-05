@@ -1,0 +1,27 @@
+{
+  "name": "@markode/cli",
+  "packageManager": "yarn@3.3.0",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/eslint": "^8.4.10",
+    "@types/node": "^18.11.11",
+    "@typescript-eslint/eslint-plugin": "^5.45.1",
+    "@typescript-eslint/parser": "^5.45.1",
+    "eslint": "^8.29.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@markode/server": "workspace:^",
+    "commander": "^9.4.1"
+  },
+  "scripts": {
+    "dev": "ts-node-dev ./src/index.ts"
+  }
+}
