@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 
 import { useTypedSelector } from '~common/hooks';
@@ -13,12 +14,14 @@ const CellList = (): JSX.Element => {
     <div className="flex flex-col gap-4">
       <InsertCell prevCellId={null} forceVisible={cells.length === 0} />
       <ul className="flex flex-col gap-4">
-        {cells.map((cell) => (
-          <li key={cell.id} className="flex flex-col gap-4">
-            <CellListItem cell={cell} />
-            <InsertCell prevCellId={cell.id} />
-          </li>
-        ))}
+        <AnimatePresence>
+          {cells.map((cell) => (
+            <li key={cell.id} className="flex flex-col gap-4">
+              <CellListItem cell={cell} />
+              <InsertCell prevCellId={cell.id} />
+            </li>
+          ))}
+        </AnimatePresence>
       </ul>
     </div>
   );
