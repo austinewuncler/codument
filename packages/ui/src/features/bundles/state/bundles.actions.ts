@@ -25,7 +25,7 @@ export const createBundle = createAsyncThunk<string, CreateBundleInput>(
       jsxFactory: '_React.createElement',
       jsxFragment: '_React.Fragment',
       define: {
-        'process.env.NODE_ENV': '"production"',
+        '"process.env.NODE_ENV"': '"production"',
         global: 'window',
       },
     });

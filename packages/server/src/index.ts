@@ -1,14 +1,27 @@
+import fastifyHttpProxy from '@fastify/http-proxy';
+import fastifyStatic from '@fastify/static';
 import Fastify from 'fastify';
+import { dirname } from 'path';
 
-const fastify = Fastify({ logger: true });
+import { getCellsRoute } from './lib';
+
+const fastify = Fastify();
 
 export const startServer = async (
   port: number,
   filename: string,
-  dir: string
+  dir: string,
+  isProduction: boolean
 ): Promise<void> => {
-  console.log(`serving traffic on port ${port}`);
-  console.log(`saving/fetching cells from ${filename}`);
-  console.log(`that file is in dir ${dir}`);
+  await fastify.register(getCellsRoute(filename, dir), { prefix: 'cells' });
+  if (isProduction)
+    await fastify.register(fastifyStatic, {
+      root: dirname(require.resolve('@markode/ui/dist/index.html')),
+    });
+  else
+    await fastify.register(fastifyHttpProxy, {
+      upstream: 'http://localhost:5173',
+      websocket: true,
+    });
   await fastify.listen({ port });
 };
