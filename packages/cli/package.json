@@ -1,7 +1,7 @@
 {
   "name": "@codument/cli",
   "packageManager": "yarn@3.3.0",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "Document and run your JavaScript (JSX) code live in the browser.",
   "homepage": "https://github.com/austinewuncler/codument",
   "license": "MIT",
