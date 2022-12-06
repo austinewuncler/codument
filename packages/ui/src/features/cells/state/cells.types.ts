@@ -9,6 +9,8 @@ export interface Cell {
 }
 
 export interface CellsState {
+  loading: boolean;
+  error: string | null;
   data: EntityState<Cell>;
 }
 
@@ -25,4 +27,8 @@ export interface UpdateCellPayload {
 export interface MoveCellPayload {
   cellId: string;
   direction: 'up' | 'down';
+}
+
+export interface SaveCellsPayload {
+  cells: Cell[];
 }

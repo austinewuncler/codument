@@ -1,6 +1,7 @@
 import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit';
 
 import cellsAdapter from './cells.adapter';
+import cellsApi from './cells.api';
 import type {
   Cell,
   CellsState,
@@ -9,7 +10,11 @@ import type {
   UpdateCellPayload,
 } from './cells.types';
 
-const initialState: CellsState = { data: cellsAdapter.getInitialState() };
+const initialState: CellsState = {
+  loading: false,
+  error: null,
+  data: cellsAdapter.getInitialState(),
+};
 
 const cellsSlice = createSlice({
   name: 'cells',
@@ -46,6 +51,28 @@ const cellsSlice = createSlice({
       cellsAdapter.removeOne(state.data, cellId);
     },
   },
+  extraReducers: (builder) =>
+    builder
+      .addMatcher(cellsApi.endpoints.fetchCells.matchPending, (state) => {
+        state.loading = true;
+        state.error = null;
+        state.data = cellsAdapter.getInitialState();
+      })
+      .addMatcher(
+        cellsApi.endpoints.fetchCells.matchRejected,
+        (state, { error }) => {
+          state.loading = false;
+          state.error = error.message as string;
+        }
+      )
+      .addMatcher(
+        cellsApi.endpoints.fetchCells.matchFulfilled,
+        (state, { payload }) => {
+          const cells = payload;
+          state.loading = false;
+          state.data = cellsAdapter.addMany(state.data, cells);
+        }
+      ),
 });
 
 export default cellsSlice;

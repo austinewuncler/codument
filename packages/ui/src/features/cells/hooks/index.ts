@@ -1,3 +1,4 @@
+import useCells from './useCells';
 import useCumulativeCode from './useCumulativeCode';
 
-export { useCumulativeCode };
+export { useCells, useCumulativeCode };

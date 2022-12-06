@@ -1,14 +1,12 @@
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 
-import { useTypedSelector } from '~common/hooks';
-
-import { selectCells } from '../state';
+import { useCells } from '../hooks';
 import CellListItem from './CellListItem';
 import InsertCell from './InsertCell';
 
 const CellList = (): JSX.Element => {
-  const cells = useTypedSelector(selectCells);
+  const cells = useCells();
 
   return (
     <div className="flex flex-col gap-4">
