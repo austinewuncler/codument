@@ -32,6 +32,7 @@
   },
   "scripts": {
     "dev": "tsc --watch --preserveWatchOutput",
-    "build": "tsc"
+    "build": "tsc",
+    "publish": "yarn npm publish"
   }
 }

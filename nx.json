@@ -6,6 +6,7 @@
     }
   },
   "targetDefaults": {
-    "build": { "dependsOn": ["^build"], "outputs": ["{projectRoot}/dist"] }
+    "build": { "dependsOn": ["^build"], "outputs": ["{projectRoot}/dist"] },
+    "publish": { "dependsOn": ["build"], "outputs": [] }
   }
 }
