@@ -1,5 +1,5 @@
 {
-  "name": "markode",
+  "name": "codument",
   "packageManager": "yarn@3.3.0",
   "private": true,
   "workspaces": [
@@ -17,8 +17,8 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "dev": "lerna run --ignore @markode/cli dev",
-    "start": "lerna run --scope @markode/cli dev --",
-    "build": "lerna run --scope @markode/cli build"
+    "dev": "lerna run --ignore @codument/cli dev",
+    "start": "lerna run --scope @codument/cli dev --",
+    "build": "lerna run --scope @codument/cli build"
   }
 }

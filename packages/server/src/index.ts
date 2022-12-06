@@ -16,7 +16,7 @@ export const startServer = async (
   await fastify.register(getCellsRoute(filename, dir), { prefix: 'cells' });
   if (isProduction)
     await fastify.register(fastifyStatic, {
-      root: dirname(require.resolve('@markode/ui/dist/index.html')),
+      root: dirname(require.resolve('@codument/ui/dist/index.html')),
     });
   else
     await fastify.register(fastifyHttpProxy, {

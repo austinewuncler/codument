@@ -1,5 +1,5 @@
 {
-  "name": "@markode/server",
+  "name": "@codument/server",
   "packageManager": "yarn@3.3.0",
   "version": "1.0.0",
   "main": "dist/index.js",
@@ -19,9 +19,9 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
+    "@codument/ui": "workspace:^",
     "@fastify/http-proxy": "^8.4.0",
     "@fastify/static": "^6.6.0",
-    "@markode/ui": "workspace:^",
     "fastify": "^4.10.2"
   },
   "scripts": {
