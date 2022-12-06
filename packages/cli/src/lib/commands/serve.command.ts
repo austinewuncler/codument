@@ -1,4 +1,4 @@
-import { startServer } from '@marckode/server';
+import { startServer } from '@codument/server';
 import { Command } from 'commander';
 import { basename, dirname, join } from 'path';
 

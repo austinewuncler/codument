@@ -1,5 +1,5 @@
 {
-  "name": "marckode",
+  "name": "codument",
   "packageManager": "yarn@3.3.0",
   "private": true,
   "workspaces": [
@@ -17,9 +17,9 @@
     "typescript": "^4.9.3"
   },
   "scripts": {
-    "dev": "lerna run --ignore @marckode/cli dev",
-    "start": "lerna run --scope @marckode/cli dev --",
-    "build": "lerna run --scope @marckode/cli build",
+    "dev": "lerna run --ignore @codument/cli dev",
+    "start": "lerna run --scope @codument/cli dev --",
+    "build": "lerna run --scope @codument/cli build",
     "version": "lerna version",
     "publish": "lerna publish"
   }
