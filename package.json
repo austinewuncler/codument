@@ -19,8 +19,6 @@
   "scripts": {
     "dev": "lerna run --ignore @codument/cli dev",
     "start": "lerna run --scope @codument/cli dev --",
-    "build": "lerna run --scope @codument/cli build",
-    "version": "lerna version",
-    "publish": "lerna publish"
+    "build": "lerna run --scope @codument/cli build"
   }
 }
