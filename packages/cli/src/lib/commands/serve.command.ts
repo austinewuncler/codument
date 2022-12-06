@@ -11,7 +11,9 @@ const serveCommand = new Command('serve')
   .option('-p, --port <number>', 'port to run server on', '3000')
   .action(async (filename: string, { port }: { port: string }) => {
     try {
-      const dir = join(process.cwd(), dirname(filename));
+      let dir: string;
+      if (isProduction) dir = join(process.cwd(), dirname(filename));
+      else dir = join(process.cwd(), dirname(filename), 'notes');
       await startServer(parseInt(port), basename(filename), dir, isProduction);
       console.log(
         `Opened ${filename}. Navigate to http://localhost:${port} to edit the file.`
