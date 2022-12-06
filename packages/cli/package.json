@@ -1,12 +1,12 @@
 {
-  "name": "@codument/cli",
+  "name": "@marckode/cli",
   "packageManager": "yarn@3.3.0",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "Document and run your JavaScript (JSX) code live in the browser.",
-  "homepage": "https://github.com/austinewuncler/codument",
+  "homepage": "https://github.com/austinewuncler/marckode",
   "license": "MIT",
   "bin": {
-    "codument": "dist/index.js"
+    "marckode": "dist/index.js"
   },
   "files": [
     "dist"
@@ -21,7 +21,7 @@
   },
   "bugs": {
     "email": "austinewuncler@gmail.com",
-    "url": "https://github.com/austinewuncler/codument/issues"
+    "url": "https://github.com/austinewuncler/marckode/issues"
   },
   "keywords": [
     "javascript",
@@ -31,10 +31,10 @@
   "repository": {
     "directory": "packages/cli",
     "type": "git",
-    "url": "https://github.com/austinewuncler/codument.git"
+    "url": "https://github.com/austinewuncler/marckode.git"
   },
   "devDependencies": {
-    "@codument/ui": "workspace:^",
+    "@marckode/ui": "workspace:^",
     "@types/eslint": "^8.4.10",
     "@types/node": "^18.11.11",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
@@ -52,11 +52,11 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@codument/server": "workspace:^"
+    "@marckode/server": "workspace:^"
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "build": "esbuild src/index.ts --platform=node --outfile=dist/index.js --external:@codument/ui --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\"",
-    "publish": "yarn npm publish"
+    "build": "esbuild src/index.ts --platform=node --outfile=dist/index.js --external:@marckode/ui --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\"",
+    "publish": "npm publish"
   }
 }
