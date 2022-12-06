@@ -1,6 +1,7 @@
 .pnp.*
 .yarn/*
 dist
+lerna-debug.log
 node_modules
 !.yarn/patches
 !.yarn/plugins
