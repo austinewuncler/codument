@@ -49,11 +49,11 @@ yarn dlx -p @codument/cli codument serve [options] [filename]
 
 ### Light Mode
 
-![App Screenshot](assets/screenshot-light.jpeg)
+![App Screenshot](../../assets/screenshot-light.jpeg)
 
 ### Dark Mode
 
-![App Screenshot](assets/screenshot-dark.jpeg)
+![App Screenshot](../../assets/screenshot-dark.jpeg)
 
 ## License
 
