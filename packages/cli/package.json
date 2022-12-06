@@ -1,7 +1,7 @@
 {
   "name": "@marckode/cli",
   "packageManager": "yarn@3.3.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Document and run your JavaScript (JSX) code live in the browser.",
   "homepage": "https://github.com/austinewuncler/marckode",
   "license": "MIT",
