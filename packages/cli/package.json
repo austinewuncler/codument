@@ -1,7 +1,7 @@
 {
   "name": "@codument/cli",
   "packageManager": "yarn@3.3.0",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Document and run your JavaScript (JSX) code live in the browser.",
   "homepage": "https://github.com/austinewuncler/codument",
   "license": "MIT",
@@ -56,6 +56,7 @@
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
-    "build": "esbuild src/index.ts --platform=node --outfile=dist/index.js --external:@codument/ui --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\""
+    "build": "esbuild src/index.ts --platform=node --outfile=dist/index.js --external:@codument/ui --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\"",
+    "publish": "yarn npm publish"
   }
 }
