@@ -8,7 +8,11 @@ const serveCommand = new Command('serve')
   .command('serve')
   .description('start server')
   .argument('[filename]', 'file to edit', 'notebook.json')
-  .option('-p, --port <number>', 'port to run server on', '3000')
+  .option(
+    '-p, --port <number>',
+    'port to run server on',
+    isProduction ? '4000' : '3000'
+  )
   .action(async (filename: string, { port }: { port: string }) => {
     try {
       let dir: string;

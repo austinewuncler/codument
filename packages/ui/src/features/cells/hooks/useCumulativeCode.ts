@@ -26,8 +26,7 @@ const useCumulativeCode = (cellId: string): string => {
   const cumulativeCells = useTypedSelector(selectCumulativeCells(cellId));
   const cumulativeCode = cumulativeCells
     .filter(({ type }) => type === 'code')
-    .reduce((prev, { id, content }) => {
-      const acc = [...prev];
+    .reduce((acc, { id, content }) => {
       if (id === cellId) acc.push(showFunc);
       else acc.push(showFuncNoop);
       return [...acc, content];
