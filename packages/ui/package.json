@@ -2,6 +2,7 @@
   "name": "@codument/ui",
   "version": "1.4.10",
   "type": "module",
+  "license": "MIT",
   "files": [
     "dist"
   ],
