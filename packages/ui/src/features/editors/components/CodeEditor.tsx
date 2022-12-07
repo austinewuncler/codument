@@ -1,4 +1,4 @@
-import Editor, { OnChange } from '@monaco-editor/react';
+import MonacoEditor, { OnChange } from '@monaco-editor/react';
 import type { editor } from 'monaco-editor';
 import prettier from 'prettier';
 import babelParser from 'prettier/parser-babel';
@@ -24,7 +24,7 @@ const CodeEditor = ({ content, onChange }: Props): JSX.Element => {
 
   return (
     <div className="relative h-full group">
-      <Editor
+      <MonacoEditor
         value={content}
         language="javascript"
         theme={theme === 'dark' ? NIGHT_OWL_DARK : NIGHT_OWL_LIGHT}
@@ -36,7 +36,7 @@ const CodeEditor = ({ content, onChange }: Props): JSX.Element => {
           folding: false,
           lineNumbersMinChars: 3,
           minimap: { enabled: false },
-          padding: { top: 16, bottom: 16 },
+          padding: { top: 22, bottom: 22 },
           scrollBeyondLastLine: false,
           scrollbar: { verticalScrollbarSize: 0 },
           smoothScrolling: true,

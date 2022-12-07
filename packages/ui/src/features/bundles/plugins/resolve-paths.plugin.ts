@@ -10,7 +10,10 @@ const resolvePathsPlugin = (): Plugin => ({
 
     onResolve({ filter: /^\.+\// }, ({ path, resolveDir }) => ({
       namespace: 'a',
-      path: new URL(path, `https://unpkg.com${resolveDir}/`).href,
+      path: new URL(path, `https://unpkg.com${resolveDir}/`).href.replace(
+        /\/$/,
+        ''
+      ),
     }));
 
     onResolve({ filter: /.*/ }, async ({ path }) => ({

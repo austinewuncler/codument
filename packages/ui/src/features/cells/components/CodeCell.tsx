@@ -1,5 +1,5 @@
 import { Resizable } from 're-resizable';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { useTypedDispatch, useTypedSelector } from '~common/hooks';
 import { BundlePreview, createBundle, selectBundle } from '~features/bundles';
@@ -17,6 +17,7 @@ const CodeCell = ({ content, cellId }: Props): JSX.Element => {
   const dispatch = useTypedDispatch();
   const bundle = useTypedSelector(selectBundle(cellId));
   const cumulativeCode = useCumulativeCode(cellId);
+  const resizableRef = useRef<Resizable>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,11 +28,13 @@ const CodeCell = ({ content, cellId }: Props): JSX.Element => {
 
   return (
     <Resizable
+      ref={resizableRef}
       className="flex"
-      defaultSize={{ width: 'auto', height: 300 }}
+      defaultSize={{ width: 'auto', height: 'auto' }}
       handleStyles={{ bottom: { cursor: 'ns-resize' } }}
       enable={{ bottom: true }}
-      minHeight={64}
+      minHeight={150}
+      maxHeight={window.innerHeight * 0.7}
     >
       <Resizable
         defaultSize={{ width: '50%', height: 'auto' }}
@@ -42,9 +45,13 @@ const CodeCell = ({ content, cellId }: Props): JSX.Element => {
       >
         <CodeEditor
           content={content}
-          onChange={(value) =>
-            dispatch(updateCell({ cellId, content: value ?? '' }))
-          }
+          onChange={(value) => {
+            const newLines: number = value?.match(/\n/g)?.length ?? 0;
+            const lines = newLines + 1;
+            const height = lines * 22 + 44;
+            resizableRef.current?.updateSize({ width: 'auto', height });
+            dispatch(updateCell({ cellId, content: value ?? '' }));
+          }}
         />
       </Resizable>
       <BundlePreview bundle={bundle} />

@@ -2,9 +2,10 @@ import './index.css';
 
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
+import { Provider as ReduxProvider } from 'react-redux';
 
 import { App, LoadingScreen } from '~common/components';
+import { ThemeProvider } from '~common/context';
 import { store } from '~common/store';
 import { initializeBundler } from '~features/bundles';
 
@@ -20,9 +21,11 @@ root.render(
 initializeBundler().then(() => {
   root.render(
     <StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <ReduxProvider store={store}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </ReduxProvider>
     </StrictMode>
   );
 });

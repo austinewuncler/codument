@@ -12,6 +12,7 @@ const MarkdownCell = ({ content, id }: Props): JSX.Element => {
   const [editing, setEditing] = useState(false);
   const editorRef = useRef<HTMLDivElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const resizableRef = useRef<Resizable>(null);
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
@@ -28,16 +29,21 @@ const MarkdownCell = ({ content, id }: Props): JSX.Element => {
   return editing ? (
     <div ref={editorRef}>
       <Resizable
-        defaultSize={{ width: 'auto', height: 300 }}
+        ref={resizableRef}
+        defaultSize={{ width: 'auto', height: 'auto' }}
         handleStyles={{ bottom: { cursor: 'ns-resize' } }}
         enable={{ bottom: true }}
-        minHeight={64}
+        maxHeight={window.innerHeight * 0.7}
       >
         <MarkdownEditor
-          content={content}
-          onChange={(value) =>
-            dispatch(updateCell({ cellId: id, content: value ?? '' }))
-          }
+          content={content.trim().length > 0 ? content : ' '}
+          onChange={(value) => {
+            const newLines: number = value?.match(/\n/g)?.length ?? 0;
+            const lines = newLines + 1;
+            const height = lines * 22 + 44;
+            resizableRef.current?.updateSize({ width: 'auto', height });
+            dispatch(updateCell({ cellId: id, content: value ?? '' }));
+          }}
         />
       </Resizable>
     </div>
@@ -45,7 +51,7 @@ const MarkdownCell = ({ content, id }: Props): JSX.Element => {
     <div ref={previewRef}>
       <MDEditor.Markdown
         className="p-4"
-        source={content.length === 0 ? 'Click here to edit...' : content}
+        source={content.trim().length === 0 ? 'Click here to edit...' : content}
       />
     </div>
   );
