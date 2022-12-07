@@ -50,6 +50,9 @@ const cellsSlice = createSlice({
       const cellId = payload;
       cellsAdapter.removeOne(state.data, cellId);
     },
+    deleteCells: (state) => {
+      state.data = cellsAdapter.getInitialState();
+    },
   },
   extraReducers: (builder) =>
     builder
