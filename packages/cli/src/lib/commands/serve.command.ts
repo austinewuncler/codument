@@ -1,4 +1,5 @@
 import { startServer } from '@codument/server';
+import colors from 'colors/safe';
 import { Command } from 'commander';
 import { basename, dirname, join } from 'path';
 
@@ -20,14 +21,18 @@ const serveCommand = new Command('serve')
       else dir = join(process.cwd(), dirname(filename), 'notes');
       await startServer(parseInt(port), basename(filename), dir, isProduction);
       console.log(
-        `Opened ${filename}. Navigate to http://localhost:${port} to edit the file.`
+        colors.green(
+          `Serving file ${colors.italic(
+            colors.bold(colors.magenta(join(dir, filename)))
+          )} at ${colors.underline(colors.cyan(`http://localhost:${port}.`))}`
+        )
       );
     } catch (error: any) {
       if (error.code === 'EADDRINUSE')
         console.error(
-          `port ${port} is in use, try running on a different port`
+          colors.red(`port ${port} is in use, try running on a different port`)
         );
-      else console.log(error.message);
+      else console.error(colors.red(error.message));
       process.exit(1);
     }
   });

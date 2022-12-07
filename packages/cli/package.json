@@ -54,7 +54,8 @@
   },
   "dependencies": {
     "@codument/server": "workspace:^",
-    "@codument/ui": "workspace:^"
+    "@codument/ui": "workspace:^",
+    "colors": "^1.4.0"
   },
   "scripts": {
     "dev": "ts-node-dev ./src/index.ts",
