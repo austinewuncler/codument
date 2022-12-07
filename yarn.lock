@@ -366,7 +366,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@codument/server@workspace:packages/server"
   dependencies:
-    "@codument/ui": "workspace:^"
     "@fastify/http-proxy": ^8.4.0
     "@fastify/static": ^6.6.0
     "@types/eslint": ^8.4.10
